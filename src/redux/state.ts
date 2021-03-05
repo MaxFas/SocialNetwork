@@ -1,4 +1,6 @@
-import {rerenderMainTree} from "../render";
+let rerenderMainTree = () => {
+    console.log('state was changed')
+}
 
 export type MessageType = {
     id: number
@@ -58,12 +60,16 @@ export let state: RootStateType =
             }
             state.profilePage.posts.push(newPost);
             state.profilePage.newPostText = ''
-       rerenderMainTree(state)
+       rerenderMainTree()
     }
 
     export const updateText = (newText: string) => {
         state.profilePage.newPostText = newText;
-        rerenderMainTree(state)
+        rerenderMainTree()
     }
+
+    export const subscribe = (callback: ()=> void) => {
+        rerenderMainTree = callback
+}
 
 
