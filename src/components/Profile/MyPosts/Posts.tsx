@@ -1,12 +1,11 @@
 import React, {ChangeEvent} from 'react';
 import Post from "./Post/Post";
 import classes from './Posts.module.css'
-import {PostType} from "../../../redux/state";
+import {ActionsTypes, addPostAC, onChangeAreaValueAC, PostType} from "../../../redux/state";
 
 type PostsTypePage = {
     posts: Array<PostType>
-    addPost: () => void
-    updateText: (newText: string) => void
+    dispatch: (actions: ActionsTypes) => void
     newPost: string
 }
 
@@ -17,11 +16,11 @@ function Posts(props: PostsTypePage) {
     })
 
     const appPost = () => {
-        props.addPost()
+        props.dispatch(addPostAC())
     }
 
     const onChangeAreaValue = (event: ChangeEvent<HTMLTextAreaElement>)=> {
-        props.updateText(event.currentTarget.value)
+        props.dispatch(onChangeAreaValueAC(event.currentTarget.value))
     }
 
     return (

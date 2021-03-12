@@ -19,34 +19,32 @@ export let store: StoreType = {
     getState () {
         return this._state
     },
-    addPost () {
-        const newPost: PostType = {
-            id: 5,
-            message: this._state.profilePage.newPostText,
-            likesCount: 0
-        }
-        this._state.profilePage.posts.push(newPost);
-        this._state.profilePage.newPostText = ''
-        this._callSubscriber()
-    },
-    updateText (newText: string) {
-        this._state.profilePage.newPostText = newText;
-        this._callSubscriber()
-    },
     subscribe (callback: ()=> void) {
         this._callSubscriber = callback
+    },
+    dispatch (action) {
+        if (action.type === 'ADD-POST'){
+            const newPost: PostType = {
+                id: 5,
+                message: this._state.profilePage.newPostText,
+                likesCount: 0
+            }
+            this._state.profilePage.posts.push(newPost);
+            this._state.profilePage.newPostText = ''
+            this._callSubscriber()
+        } else if (action.type === 'UPDATE-TEXT'){
+            this._state.profilePage.newPostText = action.newText;
+            this._callSubscriber()
+        }
     }
-
-
 }
 
 export type StoreType = {
     _state: RootStateType
     _callSubscriber: () => void
     getState: () => RootStateType
-    addPost: () => void
-    updateText: (newText: string) => void
     subscribe: (callback: ()=> void) => void
+    dispatch: (action: ActionsTypes) => void
 }
 export type MessageType = {
     id: number
@@ -75,6 +73,10 @@ export type RootStateType = {
     dialogsPage: DialogPageType
     sidebar: SidebarType
 }
+export type ActionsTypes = ReturnType<typeof addPostAC>|ReturnType<typeof onChangeAreaValueAC>
+
+export const addPostAC = () => ({type: "ADD-POST"} as const)
+export const onChangeAreaValueAC = (text: string) => ({type:"UPDATE-TEXT", newText: text} as const)
 
 
 
