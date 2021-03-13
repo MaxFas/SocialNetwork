@@ -1,7 +1,8 @@
 import React, {ChangeEvent} from 'react';
 import Post from "./Post/Post";
 import classes from './Posts.module.css'
-import {ActionsTypes, addPostAC, onChangeAreaValueAC, PostType} from "../../../redux/state";
+import {ActionsTypes, PostType} from "../../../redux/state";
+import {addPostAC, changePostAC} from "../../../redux/profile-reducer";
 
 type PostsTypePage = {
     posts: Array<PostType>
@@ -20,7 +21,7 @@ function Posts(props: PostsTypePage) {
     }
 
     const onChangeAreaValue = (event: ChangeEvent<HTMLTextAreaElement>)=> {
-        props.dispatch(onChangeAreaValueAC(event.currentTarget.value))
+        props.dispatch(changePostAC(event.currentTarget.value))
     }
 
     return (
