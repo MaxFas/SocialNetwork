@@ -1,12 +1,13 @@
 import React, {ChangeEvent} from 'react';
 import Post from "./Post/Post";
 import classes from './Posts.module.css'
-import {ActionsTypes, PostType} from "../../../redux/state";
-import {addPostAC, changePostAC} from "../../../redux/profile-reducer";
+import {PostType} from "../../../redux/state";
+
 
 type PostsTypePage = {
+    addPost: () => void
+    addChangedPost: (text: string) => void
     posts: Array<PostType>
-    dispatch: (actions: ActionsTypes) => void
     newPost: string
 }
 
@@ -15,14 +16,10 @@ function Posts(props: PostsTypePage) {
     const posts = props.posts.map(p => { return(
         <Post message={p.message} likesCount={p.likesCount}/>)
     })
-
     const appPost = () => {
-        props.dispatch(addPostAC())
-    }
-
+        props.addPost()}
     const onChangeAreaValue = (event: ChangeEvent<HTMLTextAreaElement>)=> {
-        props.dispatch(changePostAC(event.currentTarget.value))
-    }
+        props.addChangedPost(event.currentTarget.value)}
 
     return (
         <div className={classes.postsBlock}>
