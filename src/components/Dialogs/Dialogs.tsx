@@ -20,8 +20,8 @@ function Dialogs(props: LocalDialogsPageType) {
         props.onNewMessageChange(event.currentTarget.value)
     }
 
-    const dialogs = props.dialogsPage.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)
-    const message = props.dialogsPage.messages.map(m=> <Message message={m.message}/>)
+    const dialogs = props.dialogsPage.dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id}/>)
+    const message = props.dialogsPage.messages.map(m=> <Message key={m.id} message={m.message}/>)
 
     return (
         <div className={classes.dialogs}>

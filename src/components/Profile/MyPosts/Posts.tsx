@@ -14,7 +14,7 @@ type PostsTypePage = {
 function Posts(props: PostsTypePage) {
 
     const posts = props.posts.map(p => { return(
-        <Post message={p.message} likesCount={p.likesCount}/>)
+        <Post key={p.id} message={p.message} likesCount={p.likesCount}/>)
     })
     const appPost = () => {
         props.addPost()}
