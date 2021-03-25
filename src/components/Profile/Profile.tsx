@@ -1,7 +1,6 @@
 import React from 'react';
 import classes1 from './Profile.module.css';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {StoreReduxType} from "../../redux/redux-store";
 import PostsContainer from "./MyPosts/PostsContainer";
 
 function Profile() {

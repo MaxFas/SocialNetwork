@@ -1,15 +1,8 @@
-import {addPostAC, changePostAC, profileReducer} from "./profile-reducer";
-import {changeMessageAC, dialogsReducer, sendMessageAC} from "./dialogs-reducer";
-import {sidebarReducer} from "./sidebar-reducer";
+import {addPostAC, changePostAC} from "./profile-reducer";
+import {changeMessageAC, sendMessageAC} from "./dialogs-reducer";
+import {followAC, setUsersAC, unFollowAC} from "./users-reducer";
 
 
-export type StoreType = {
-    _state: RootStateType
-    _callSubscriber: () => void
-    getState: () => RootStateType
-    subscribe: (callback: ()=> void) => void
-    dispatch: (action: ActionsTypes) => void
-}
 export type MessageType = {
     id: number
     message: string
@@ -23,6 +16,20 @@ export type PostType = {
     message: string
     likesCount: number
 }
+
+export type UsersType = {
+    users: Array<UserType>
+}
+
+export type UserType = {
+    id: number
+    photoUrl: string
+    followed: boolean
+    fullName: string
+    status: string
+    location: {city: string, country: string}
+}
+
 export type ProfilePageType = {
     newPostText: string
     posts: Array<PostType>
@@ -36,11 +43,13 @@ export type SidebarType = {}
 export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogPageType
+    usersPage: UsersType
     sidebar: SidebarType
 }
 
 export type ActionsTypes = ReturnType<typeof addPostAC>|ReturnType<typeof changePostAC>|
-    ReturnType<typeof changeMessageAC>| ReturnType<typeof sendMessageAC>
+    ReturnType<typeof changeMessageAC>|ReturnType<typeof sendMessageAC>|ReturnType<typeof followAC>
+    |ReturnType<typeof unFollowAC>|ReturnType<typeof setUsersAC>
 
 
 
