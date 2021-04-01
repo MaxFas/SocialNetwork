@@ -23,9 +23,9 @@ export type UsersType = {
 
 export type UserType = {
     id: number
-    photoUrl: string
+    photos: { small: string, large: string }
     followed: boolean
-    fullName: string
+    name: string
     status: string
     location: {city: string, country: string}
 }
@@ -40,6 +40,7 @@ export type DialogPageType = {
     newMessageBody: string
 }
 export type SidebarType = {}
+
 export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogPageType
