@@ -1,6 +1,6 @@
 import {addPostAC, changePostAC} from "./profile-reducer";
 import {changeMessageAC, sendMessageAC} from "./dialogs-reducer";
-import {followAC, setUsersAC, unFollowAC} from "./users-reducer";
+import {followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, unFollowAC} from "./users-reducer";
 
 
 export type MessageType = {
@@ -19,6 +19,9 @@ export type PostType = {
 
 export type UsersType = {
     users: Array<UserType>
+    totalUsersCount: number
+    pageSize: number
+    currentPage: number
 }
 
 export type UserType = {
@@ -50,7 +53,8 @@ export type RootStateType = {
 
 export type ActionsTypes = ReturnType<typeof addPostAC>|ReturnType<typeof changePostAC>|
     ReturnType<typeof changeMessageAC>|ReturnType<typeof sendMessageAC>|ReturnType<typeof followAC>
-    |ReturnType<typeof unFollowAC>|ReturnType<typeof setUsersAC>
+    |ReturnType<typeof unFollowAC>|ReturnType<typeof setUsersAC>|
+    ReturnType<typeof setTotalUsersCountAC>| ReturnType<typeof setCurrentPageAC>
 
 
 
