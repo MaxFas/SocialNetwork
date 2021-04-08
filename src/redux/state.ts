@@ -1,6 +1,6 @@
-import {addPostAC, changePostAC} from "./profile-reducer";
 import {changeMessageAC, sendMessageAC} from "./dialogs-reducer";
-import {followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, unFollowAC} from "./users-reducer";
+import {follow, setCurrentPage, setTotalUsersCount, setUsers, toggleFetching, unFollow} from "./users-reducer";
+import {addPost, changePost, setUserProfile} from "./profile-reducer";
 
 
 export type MessageType = {
@@ -22,6 +22,7 @@ export type UsersType = {
     totalUsersCount: number
     pageSize: number
     currentPage: number
+    isFetching: boolean
 }
 
 export type UserType = {
@@ -33,9 +34,32 @@ export type UserType = {
     location: {city: string, country: string}
 }
 
+export type ProfileType = {
+    aboutMe: string,
+    contacts: {
+        facebook: string,
+        website: null,
+        vk: string,
+        twitter: string,
+        instagram: string,
+        youtube: null,
+        github: string,
+        mainLink: null
+    },
+    lookingForAJob: boolean,
+    lookingForAJobDescription: string
+    fullName: string,
+    userId: number,
+    photos: {
+        small: string,
+        large: string
+    }
+}
+
 export type ProfilePageType = {
     newPostText: string
     posts: Array<PostType>
+    profile:ProfileType
 }
 export type DialogPageType = {
     dialogs: Array<DialogType>
@@ -44,17 +68,12 @@ export type DialogPageType = {
 }
 export type SidebarType = {}
 
-export type RootStateType = {
-    profilePage: ProfilePageType
-    dialogsPage: DialogPageType
-    usersPage: UsersType
-    sidebar: SidebarType
-}
 
-export type ActionsTypes = ReturnType<typeof addPostAC>|ReturnType<typeof changePostAC>|
-    ReturnType<typeof changeMessageAC>|ReturnType<typeof sendMessageAC>|ReturnType<typeof followAC>
-    |ReturnType<typeof unFollowAC>|ReturnType<typeof setUsersAC>|
-    ReturnType<typeof setTotalUsersCountAC>| ReturnType<typeof setCurrentPageAC>
+export type ActionsTypes = ReturnType<typeof addPost>|ReturnType<typeof changePost>|
+    ReturnType<typeof changeMessageAC>|ReturnType<typeof sendMessageAC>|ReturnType<typeof follow>
+    |ReturnType<typeof unFollow>|ReturnType<typeof setUsers>|
+    ReturnType<typeof setTotalUsersCount>| ReturnType<typeof setCurrentPage>| ReturnType<typeof toggleFetching>|
+    ReturnType<typeof setUserProfile>
 
 
 
