@@ -4,14 +4,14 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import PostsContainer from "./MyPosts/PostsContainer";
 import {ProfileType} from "../../redux/state";
 
-type ProfilePageType = {
-    profile: ProfileType
+type ProfileFCType = {
+    profile: ProfileType | null
 }
 
-function Profile(props: ProfilePageType) {
+const Profile = (props: ProfileFCType) => {
     return (
         <div className={classes1.content}>
-            <ProfileInfo/>
+            <ProfileInfo profile={props.profile}/>
             <PostsContainer/>
         </div>
     )

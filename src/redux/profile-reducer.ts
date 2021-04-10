@@ -1,16 +1,18 @@
-import {ActionsTypes, PostType, ProfilePageType, UserType} from "./state";
+import {ActionsTypes, PostType, ProfileType} from "./state";
 
-let initialState: ProfilePageType = {
+
+let initialState = {
     newPostText: '',
     posts: [
         {id: 1, message: 'Hi everybody', likesCount: 5},
         {id: 2, message: 'God this is the only future', likesCount: 12},
     ],
-    profile: {}
+    profile: null as ProfileType | null
 }
 
-export const profileReducer = (state = initialState, action: ActionsTypes) => {
+type ProfileInitialType = typeof initialState
 
+export const profileReducer = (state: ProfileInitialType = initialState, action: ActionsTypes): ProfileInitialType => {
     switch (action.type) {
         case "ADD-POST":
             const newPost: PostType = {
@@ -30,4 +32,4 @@ export const profileReducer = (state = initialState, action: ActionsTypes) => {
 
 export const addPost = () => ({type: "ADD-POST"} as const)
 export const changePost = (text: string) => ({type: 'UPDATE-POST-BODY', newText: text} as const)
-export const setUserProfile = (profile: UserType) => ({type: 'SET-USER-PROFILE', profile} as const)
+export const setUserProfile = (profile: ProfileType | null) => ({type: 'SET-USER-PROFILE', profile} as const)

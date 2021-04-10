@@ -32,7 +32,7 @@ export function Users (props: UsersPageType) {
                     <div key={u.id}>
                 <span>
                     <div>
-                        <NavLink to={'./profile'+u.id}>
+                        <NavLink to={'./profile/'+u.id}>
                         <img className={s.userPhoto} src={u.photos.small !== null ? u.photos.small : userPhoto}
                               alt=""/>
                         </NavLink>

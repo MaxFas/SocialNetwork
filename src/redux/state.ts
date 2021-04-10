@@ -36,30 +36,26 @@ export type UserType = {
 
 export type ProfileType = {
     aboutMe: string,
-    contacts: {
-        facebook: string,
-        website: null,
-        vk: string,
-        twitter: string,
-        instagram: string,
-        youtube: null,
-        github: string,
-        mainLink: null
-    },
+    contacts: ContactType,
     lookingForAJob: boolean,
     lookingForAJobDescription: string
     fullName: string,
     userId: number,
-    photos: {
-        small: string,
-        large: string
-    }
+    photos: PhotosType
 }
-
-export type ProfilePageType = {
-    newPostText: string
-    posts: Array<PostType>
-    profile:ProfileType
+export type ContactType = {
+    facebook: string | null,
+    website: null | string,
+    vk: string | null,
+    twitter: string | null,
+    instagram: string | null,
+    youtube: null | string,
+    github: string | null,
+    mainLink: null | string
+}
+export type PhotosType = {
+    small: string,
+    large: string
 }
 export type DialogPageType = {
     dialogs: Array<DialogType>

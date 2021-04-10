@@ -1,4 +1,4 @@
-import {ActionsTypes, ProfilePageType, SidebarType} from "./state";
+import {ActionsTypes, SidebarType} from "./state";
 
 let initialState: SidebarType = {}
 
