@@ -1,6 +1,7 @@
 import {changeMessageAC, sendMessageAC} from "./dialogs-reducer";
 import {follow, setCurrentPage, setTotalUsersCount, setUsers, toggleFetching, unFollow} from "./users-reducer";
 import {addPost, changePost, setUserProfile} from "./profile-reducer";
+import {setAuthUserData} from "./auth-reducer";
 
 
 export type MessageType = {
@@ -69,7 +70,7 @@ export type ActionsTypes = ReturnType<typeof addPost>|ReturnType<typeof changePo
     ReturnType<typeof changeMessageAC>|ReturnType<typeof sendMessageAC>|ReturnType<typeof follow>
     |ReturnType<typeof unFollow>|ReturnType<typeof setUsers>|
     ReturnType<typeof setTotalUsersCount>| ReturnType<typeof setCurrentPage>| ReturnType<typeof toggleFetching>|
-    ReturnType<typeof setUserProfile>
+    ReturnType<typeof setUserProfile>| ReturnType<typeof setAuthUserData>
 
 
 
