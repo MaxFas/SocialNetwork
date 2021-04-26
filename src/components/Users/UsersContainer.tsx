@@ -20,13 +20,13 @@ export type UsersContainerType = {
     pageSize: number
     currentPage: number
     isFetching: boolean
-    followingInProgress: boolean
+    followingInProgress:Array<number>
     follow: (userID: number) => void
     unFollow: (userID: number) => void
     setUsers: (users: Array<UserType>) => void
     setTotalUsersCount: (totalUsersCount: number) => void
     setCurrentPage: (pageNumber: number) => void
-    toggleFollowingInProgress: (FollowingInProgress: boolean) => void
+    toggleFollowingInProgress: (isFetching: boolean, userID: number) => void
     toggleFetching: (isFetching: boolean) => void
 
 }
