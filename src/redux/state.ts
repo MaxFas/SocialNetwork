@@ -1,11 +1,11 @@
 import {changeMessageAC, sendMessageAC} from "./dialogs-reducer";
 import {
-    follow,
+    followSuccess,
     setCurrentPage,
     setTotalUsersCount,
     setUsers,
     toggleFetching, toggleFollowingInProgress,
-    unFollow
+    unFollowSuccess
 } from "./users-reducer";
 import {addPost, changePost, setUserProfile} from "./profile-reducer";
 import {setAuthUserData} from "./auth-reducer";
@@ -67,8 +67,8 @@ export type SidebarType = {}
 
 
 export type ActionsTypes = ReturnType<typeof addPost>|ReturnType<typeof changePost>|
-    ReturnType<typeof changeMessageAC>|ReturnType<typeof sendMessageAC>|ReturnType<typeof follow>
-    |ReturnType<typeof unFollow>|ReturnType<typeof setUsers>|
+    ReturnType<typeof changeMessageAC>|ReturnType<typeof sendMessageAC>|ReturnType<typeof followSuccess>
+    |ReturnType<typeof unFollowSuccess>|ReturnType<typeof setUsers>|
     ReturnType<typeof setTotalUsersCount>| ReturnType<typeof setCurrentPage>| ReturnType<typeof toggleFetching>|
     ReturnType<typeof setUserProfile>| ReturnType<typeof setAuthUserData> | ReturnType<typeof toggleFollowingInProgress>
 

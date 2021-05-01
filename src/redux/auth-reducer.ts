@@ -1,4 +1,5 @@
 import {ActionsTypes} from "./state";
+import {headerAPI} from "../api/api";
 
 let initialState = {
     id: null as null|number,
@@ -19,3 +20,12 @@ export const authReducer = (state: DataUserType = initialState, action: ActionsT
 }
 
 export const setAuthUserData = (userData: DataUserType) => ({type: "SET_USER_DATA", userData} as const)
+
+export const setAuth = () => (dispatch: (action: ActionsTypes) => void) =>{
+    headerAPI.auth()
+        .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(setAuthUserData(response.data.data))
+                }
+            })
+}

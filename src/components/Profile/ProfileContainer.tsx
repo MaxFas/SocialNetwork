@@ -7,6 +7,7 @@ import {setUserProfile} from "../../redux/profile-reducer";
 import {ActionsTypes, ProfileType} from "../../redux/state";
 import {withRouter} from 'react-router-dom'
 import {RouteComponentProps} from "react-router";
+import {usersAPI} from "../../api/api";
 
 
 type MSTPType = {
@@ -24,10 +25,9 @@ class ProfileContainer extends React.Component<ProfileContainerType, {}>{
     componentDidMount() {
         let userID = this.props.match.params.userID
         if (!userID){
-            userID = '2'
+            userID =  '2'
         }
-        axios
-            .get(`https://social-network.samuraijs.com/api/1.0/Profile/` + userID)
+        usersAPI.getProfile(userID)
             .then(response => this.props.setUserProfile(response.data))
     }
 
