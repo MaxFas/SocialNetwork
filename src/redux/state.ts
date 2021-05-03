@@ -67,8 +67,8 @@ export type SidebarType = {}
 
 
 export type ActionsTypes = ReturnType<typeof addPost>|ReturnType<typeof changePost>|
-    ReturnType<typeof changeMessageAC>|ReturnType<typeof sendMessageAC>|ReturnType<typeof followSuccess>
-    |ReturnType<typeof unFollowSuccess>|ReturnType<typeof setUsers>|
+    ReturnType<typeof changeMessageAC>|ReturnType<typeof sendMessageAC>|ReturnType<typeof followSuccess>|
+    ReturnType<typeof unFollowSuccess>|ReturnType<typeof setUsers>|
     ReturnType<typeof setTotalUsersCount>| ReturnType<typeof setCurrentPage>| ReturnType<typeof toggleFetching>|
     ReturnType<typeof setUserProfile>| ReturnType<typeof setAuthUserData> | ReturnType<typeof toggleFollowingInProgress>
 

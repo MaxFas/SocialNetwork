@@ -1,4 +1,5 @@
 import {ActionsTypes, PostType, ProfileType} from "./state";
+import {usersAPI} from "../api/api";
 
 
 let initialState = {
@@ -33,3 +34,8 @@ export const profileReducer = (state: ProfileInitialType = initialState, action:
 export const addPost = () => ({type: "ADD-POST"} as const)
 export const changePost = (text: string) => ({type: 'UPDATE-POST-BODY', newText: text} as const)
 export const setUserProfile = (profile: ProfileType | null) => ({type: 'SET-USER-PROFILE', profile} as const)
+export const getUserProfile = (userID: string) =>
+    (dispatch: (action: ActionsTypes) => void) => {
+        usersAPI.getProfile(userID)
+            .then(response => dispatch(setUserProfile(response.data)))
+}

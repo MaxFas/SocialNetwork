@@ -1,20 +1,19 @@
 import React from 'react';
 import Profile from "./Profile";
-import axios from "axios";
 import {connect} from "react-redux";
 import {StoreReduxType} from "../../redux/redux-store";
-import {setUserProfile} from "../../redux/profile-reducer";
-import {ActionsTypes, ProfileType} from "../../redux/state";
+import {ProfileType} from "../../redux/state";
 import {withRouter} from 'react-router-dom'
 import {RouteComponentProps} from "react-router";
-import {usersAPI} from "../../api/api";
+import {getUserProfile} from "../../redux/profile-reducer";
 
 
 type MSTPType = {
     profile: ProfileType| null
+    isAuth: boolean
 }
 type MDTPType = {
-    setUserProfile: (profile: ProfileType|null) => void
+    getUserProfile: (userID: string) => void
 }
 type ConnectPropsType = MSTPType & MDTPType
 
@@ -27,19 +26,20 @@ class ProfileContainer extends React.Component<ProfileContainerType, {}>{
         if (!userID){
             userID =  '2'
         }
-        usersAPI.getProfile(userID)
-            .then(response => this.props.setUserProfile(response.data))
+        this.props.getUserProfile(userID)
     }
 
+
     render() {
-        return <Profile profile={this.props.profile} />
+        return <Profile profile={this.props.profile} isAuth={this.props.isAuth}/>
     }
 
 }
 
 
 const mapStateToProps = (state: StoreReduxType): MSTPType => ({
-    profile: state.profilePage.profile
+    profile: state.profilePage.profile,
+    isAuth: state.auth.isAuth,
 })
 
 
@@ -48,5 +48,5 @@ type PathParamsType = {
     userID: string,
 }
 
-export default connect (mapStateToProps, {setUserProfile})(WithUrlDataContainerComponent)
+export default connect (mapStateToProps, {getUserProfile})(WithUrlDataContainerComponent)
 

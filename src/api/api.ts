@@ -25,7 +25,7 @@ export const usersAPI = {
         return instance
             .delete(`follow/${userID}`)
     },
-    getProfile (userID: number){
+    getProfile (userID: string){
         return instance
             .get(`Profile/` + userID)
     }
