@@ -1,6 +1,7 @@
 import React from 'react';
 import classes1 from './ProfileInfo.module.css';
-import {ProfileType} from "../../../redux/state";
+import {ProfileType} from "../../../redux/profile-reducer";
+
 
 export type ProfileInfoType = {
     profile: ProfileType | null

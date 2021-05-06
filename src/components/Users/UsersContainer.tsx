@@ -10,6 +10,9 @@ import {
     toggleFollowingInProgress,
     unFollow
 } from "../../redux/users-reducer";
+import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
+import {compose} from "redux";
+import Dialogs from "../Dialogs/Dialogs";
 
 export type UsersContainerType = {
     users: Array<UserType>
@@ -65,11 +68,13 @@ let mapStateToProps = (state: StoreReduxType) => {
     }
 }
 
-
-export default connect(mapStateToProps, {
-    follow,
-    unFollow,
-    setCurrentPage,
-    toggleFollowingInProgress,
-    getUsers,
-})(UsersContainer)
+export default compose <React.ComponentType>(
+    connect(mapStateToProps, {
+        follow,
+        unFollow,
+        setCurrentPage,
+        toggleFollowingInProgress,
+        getUsers,
+    }),
+    withAuthRedirect)
+(UsersContainer)

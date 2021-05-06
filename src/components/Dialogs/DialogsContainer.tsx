@@ -4,20 +4,22 @@ import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {ActionsTypes} from "../../redux/state";
 import {StoreReduxType} from "../../redux/redux-store";
+import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
+import {compose} from "redux";
 
 
 let mapStateToProps = (state: StoreReduxType) => {
     return {
-        dialogsPage: state.dialogsPage,
-        isAuth: state.auth.isAuth}
+        dialogsPage: state.dialogsPage}
 }
-let mapDispatchTpProps = (dispatch:(action: ActionsTypes) => void) => {
+let mapDispatchToProps = (dispatch:(action: ActionsTypes) => void) => {
     return {
         onNewMessageChange: (text: string) => dispatch(changeMessageAC(text)),
         onSendMessageClick: () => dispatch(sendMessageAC())
     }
 }
 
-const DialogsContainer = connect(mapStateToProps,mapDispatchTpProps)(Dialogs)
-
-export default DialogsContainer;
+export default compose <React.ComponentType>(
+    connect(mapStateToProps,mapDispatchToProps),
+    withAuthRedirect)
+(Dialogs)

@@ -35,15 +35,6 @@ export type UserType = {
     location: {city: string, country: string}
 }
 
-export type ProfileType = {
-    aboutMe: string,
-    contacts: ContactType,
-    lookingForAJob: boolean,
-    lookingForAJobDescription: string
-    fullName: string,
-    userId: number,
-    photos: PhotosType
-}
 export type ContactType = {
     facebook: string | null,
     website: null | string,

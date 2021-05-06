@@ -9,7 +9,6 @@ export type LocalDialogsPageType = {
     dialogsPage: DialogPageType
     onSendMessageClick: () => void
     onNewMessageChange: (text: string) => void
-    isAuth: boolean
 }
 
 function Dialogs(props: LocalDialogsPageType) {
@@ -25,7 +24,6 @@ function Dialogs(props: LocalDialogsPageType) {
     const dialogs = props.dialogsPage.dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id}/>)
     const message = props.dialogsPage.messages.map(m=> <Message key={m.id} message={m.message}/>)
 
-    if (!props.isAuth) return <Redirect to={'/login'}/>
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialogsItems}>

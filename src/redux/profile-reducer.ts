@@ -1,6 +1,15 @@
-import {ActionsTypes, PostType, ProfileType} from "./state";
+import {ActionsTypes, ContactType, PhotosType, PostType} from "./state";
 import {usersAPI} from "../api/api";
 
+export type ProfileType = {
+    aboutMe: string,
+    contacts: ContactType,
+    lookingForAJob: boolean,
+    lookingForAJobDescription: string
+    fullName: string,
+    userId: number,
+    photos: PhotosType
+}
 
 let initialState = {
     newPostText: '',
