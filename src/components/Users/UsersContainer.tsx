@@ -12,7 +12,6 @@ import {
 } from "../../redux/users-reducer";
 import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
 import {compose} from "redux";
-import Dialogs from "../Dialogs/Dialogs";
 
 export type UsersContainerType = {
     users: Array<UserType>
