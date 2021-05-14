@@ -3,9 +3,9 @@ import Posts from "./Posts";
 import {connect} from "react-redux";
 import {ActionsTypes} from "../../../redux/state";
 import {StoreReduxType} from "../../../redux/redux-store";
-import {addPost, changePost} from "../../../redux/profile-reducer";
+import {addPost} from "../../../redux/profile-reducer";
 
-const mapStateToProps = (state: StoreReduxType) => {
+const mapStateToProps= (state: StoreReduxType) => {
     return {
         posts: state.profilePage.posts,
         newPost: state.profilePage.newPostText
@@ -14,8 +14,7 @@ const mapStateToProps = (state: StoreReduxType) => {
 
 const mapDispatchToProps = (dispatch: (action: ActionsTypes) => void) => {
     return {
-        addPost: ()=>dispatch(addPost()),
-        addChangedPost: (text: string) => dispatch(changePost(text))
+        addPost: (newPost: string)=>dispatch(addPost(newPost)),
     }
 }
 

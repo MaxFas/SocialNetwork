@@ -7,8 +7,8 @@ import {
     toggleFetching, toggleFollowingInProgress,
     unFollowSuccess
 } from "./users-reducer";
-import {addPost, changePost, setStatus, setUserProfile} from "./profile-reducer";
-import {setAuthUserData} from "./auth-reducer";
+import {addPost, setStatus, setUserProfile} from "./profile-reducer";
+import {setAuth, setAuthUserData} from "./auth-reducer";
 
 
 export type MessageType = {
@@ -52,16 +52,16 @@ export type PhotosType = {
 export type DialogPageType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
-    newMessageBody: string
 }
 export type SidebarType = {}
 
 
-export type ActionsTypes = ReturnType<typeof addPost>|ReturnType<typeof changePost>|
+export type ActionsTypes = ReturnType<typeof addPost>|
     ReturnType<typeof changeMessageAC>|ReturnType<typeof sendMessageAC>|ReturnType<typeof followSuccess>|
     ReturnType<typeof unFollowSuccess>|ReturnType<typeof setUsers>|
     ReturnType<typeof setTotalUsersCount>| ReturnType<typeof setCurrentPage>| ReturnType<typeof toggleFetching>|
-    ReturnType<typeof setUserProfile>| ReturnType<typeof setAuthUserData> | ReturnType<typeof toggleFollowingInProgress>| ReturnType<typeof setStatus>
+    ReturnType<typeof setUserProfile>| ReturnType<typeof setAuthUserData> | ReturnType<typeof toggleFollowingInProgress>|
+    ReturnType<typeof setStatus>
 
 
 

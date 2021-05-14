@@ -9,7 +9,6 @@ const initialState: DialogPageType = {
         id: 3,
         message: 'where is the money Lebowski?'
     }],
-    newMessageBody: ''
 }
 
 export const dialogsReducer = (state = initialState, action: ActionsTypes) => {
@@ -18,15 +17,12 @@ export const dialogsReducer = (state = initialState, action: ActionsTypes) => {
         case "SEND-MESSAGE":
             return {
                 ...state,
-                messages: [...state.messages, {id: 6, message: state.newMessageBody}],
-                newMessageBody: ''
+                messages: [...state.messages, {id: 6, message: action.newMessage}],
             }
-        case "UPDATE-MESSAGE-BODY":
-            return {...state, newMessageBody: action.newText}
         default:
             return state
     }
 }
 
 export const changeMessageAC = (text: string) => ({type: 'UPDATE-MESSAGE-BODY', newText: text} as const)
-export const sendMessageAC = () => ({type: 'SEND-MESSAGE'} as const)
+export const sendMessageAC = (newMessage: string) => ({type: 'SEND-MESSAGE', newMessage} as const)
