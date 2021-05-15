@@ -10,7 +10,6 @@ import {
     toggleFollowingInProgress,
     unFollow
 } from "../../redux/users-reducer";
-import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
 import {compose} from "redux";
 
 export type UsersContainerType = {
@@ -74,6 +73,5 @@ export default compose <React.ComponentType>(
         setCurrentPage,
         toggleFollowingInProgress,
         getUsers,
-    }),
-    withAuthRedirect)
+    }),)
 (UsersContainer)

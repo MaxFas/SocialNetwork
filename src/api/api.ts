@@ -31,7 +31,7 @@ export const profileAPI = {
 
     getProfile (userID: string){
         return instance
-            .get(`Profile/` + userID)
+            .get(`profile/` + userID)
     },
     getStatus (userID: string) {
         return instance
@@ -43,7 +43,7 @@ export const profileAPI = {
     }
 }
 
-export const headerAPI = {
+export const authAPI = {
     auth () {
         return instance
             .get(`auth/me`)

@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import {login} from "../../redux/auth-reducer";
 import {Redirect} from "react-router-dom";
 import {StoreReduxType} from "../../redux/redux-store";
+import style from "../../components/common/FormControls/FormControls.module.css"
 
 type FormDataType = {
     email: string
@@ -23,9 +24,10 @@ const maxLengthText = maxLengthCreator(20)
 const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
     return (
         <form action="" onSubmit={props.handleSubmit}>
-            <div><Field placeholder={'Login'} name={'email'} component={Input} validate={[required, maxLengthText]}/></div>
+            <div><Field placeholder={'Email'} name={'email'} component={Input} validate={[required, maxLengthText]}/></div>
             <div><Field placeholder={'Password'} name={'password'} type={'password'} component={Input}/></div>
             <div><Field type='checkbox' name={'rememberMe'} component={Input}/> remember me</div>
+            {props.error&&<div className={style.formSummaryError}>{props.error}</div>}
             <div><button>
                 Login
             </button></div>
@@ -41,9 +43,7 @@ const Login = (props: LoginType) => {
     const onSubmit = (formData:FormDataType) => {
 props.login(formData.email, formData.password, formData.rememberMe)
     }
-
     if (props.isAuth) return <Redirect to={'/profile'}/>
-
     return <div>
         <h1>LOGIN</h1>
         <LoginRedux onSubmit={onSubmit}/>

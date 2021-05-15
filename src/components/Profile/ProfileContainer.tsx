@@ -6,11 +6,14 @@ import {withRouter} from 'react-router-dom'
 import {RouteComponentProps} from "react-router";
 import {getProfileStatus, getUserProfile, ProfileType, updateStatus} from "../../redux/profile-reducer";
 import {compose} from "redux"
+import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
 
 
 type MSTPType = {
     profile: ProfileType| null
     status: string
+    authorizedUserID: number|null
+    isAuth: boolean
 }
 type MDTPType = {
     getUserProfile: (userID: string) => void
@@ -19,6 +22,7 @@ type MDTPType = {
 }
 type PathParamsType = {
     userID: string,
+    history: string
 }
 
 type ConnectPropsType = MSTPType & MDTPType
@@ -27,9 +31,15 @@ type ProfileContainerType = RouteComponentProps<PathParamsType>&ConnectPropsType
 class ProfileContainer extends React.Component<ProfileContainerType, {}>{
 
     componentDidMount() {
+        debugger
         let userID = this.props.match.params.userID
         if (!userID){
-            userID =  '15990'
+            if(this.props.authorizedUserID) {
+                userID = this.props.authorizedUserID.toString()
+                if(!userID) {
+                    this.props.history.push('/login')
+                }
+            }
         }
         this.props.getUserProfile(userID)
         this.props.getProfileStatus(userID)
@@ -45,12 +55,14 @@ class ProfileContainer extends React.Component<ProfileContainerType, {}>{
 
 const mapStateToProps = (state: StoreReduxType): MSTPType => ({
     profile: state.profilePage.profile,
-    status: state.profilePage.status
+    status: state.profilePage.status,
+    authorizedUserID: state.auth.id,
+    isAuth: state.auth.isAuth
 })
 
 
 export default compose <React.ComponentType>(
     connect (mapStateToProps, {getUserProfile, getProfileStatus, updateStatus}),
     withRouter,
-    // withAuthRedirect
+    withAuthRedirect
 )(ProfileContainer)
