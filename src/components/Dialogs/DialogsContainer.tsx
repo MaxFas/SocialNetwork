@@ -2,8 +2,7 @@ import React from "react";
 import {sendMessageAC} from "../../redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
-import {ActionsTypes} from "../../redux/state";
-import {StoreReduxType} from "../../redux/redux-store";
+import {ActionsTypes, StoreReduxType} from "../../redux/redux-store";
 import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
 import {compose} from "redux";
 

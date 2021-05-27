@@ -1,7 +1,5 @@
-import {ActionsTypes} from "./state";
-import {authAPI} from "../api/api";
-import {stopSubmit} from "redux-form";
 import {setAuth} from "./auth-reducer";
+import {ActionsTypes, AppThunk} from "./redux-store";
 
 let initialState = {
     initializedSuccess: false
@@ -21,9 +19,8 @@ export const AppReducer = (state = initialState, action: ActionsTypes): AppReduc
 export const initializedSuccess = () =>
     ({type: "INITIALIZED_SUCCESS"} as const)
 
-export const initializeApp = () => (dispatch: (action: ActionsTypes) => void) => {
+export const initializeApp = (): AppThunk => (dispatch) => {
 debugger
-    //@ts-ignore
     let promise = dispatch(setAuth())
     Promise.all([promise])
         .then(()=> {

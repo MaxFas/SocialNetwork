@@ -1,5 +1,6 @@
-import {ActionsTypes, ContactType, PhotosType, PostType} from "./state";
+import {ContactType, PhotosType, PostType} from "./state";
 import {profileAPI} from "../api/api";
+import {ActionsTypes} from "./redux-store";
 
 export type ProfileType = {
     aboutMe: string,

@@ -1,6 +1,7 @@
-import {ActionsTypes} from "./state";
+
 import {authAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
+import {ActionsTypes, AppThunk} from "./redux-store";
 
 let initialState = {
     id: null as null|number,
@@ -34,16 +35,14 @@ export const setAuth = () => (dispatch: (action: ActionsTypes) => void) =>{
 }
 
 
-export const login = (email: string, password: string, rememberMe: boolean) => (dispatch: (action: ActionsTypes) => void) =>{
+export const login = (email: string, password: string, rememberMe: boolean): AppThunk => (dispatch) =>{
     debugger
     authAPI.login(email, password, rememberMe)
         .then(response => {
             if (response.data.resultCode === 0) {
-                //@ts-ignore
                 dispatch(setAuth())
             } else {
                 let error = response.data.messages.length > 0? response.data.messages[0]: 'Some Error'
-                //@ts-ignore
                 dispatch(stopSubmit('login', {_error: error}))
             }
         })

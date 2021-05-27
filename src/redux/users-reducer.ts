@@ -1,5 +1,6 @@
-import {ActionsTypes, UserType} from "./state";
+import {UserType} from "./state";
 import {usersAPI} from "../api/api";
+import {ActionsTypes} from "./redux-store";
 
 export type UsersType = {
     users: Array<UserType>
@@ -60,7 +61,7 @@ export const setCurrentPage = (currentPage: number) => ({type: 'SET_CURRENT_PAGE
 export const toggleFetching = (isFetching: boolean) => ({type: 'CHANGE_FETCHING', isFetching} as const)
 export const toggleFollowingInProgress = (isFetching: boolean, userID: number) => ({type: 'TOGGLE_IS_FOLLOWING_PROGRESS', isFetching, userID} as const)
 
-export const getUsers = (pageSize: number,currentPage:number) =>
+export const requestUsers = (pageSize: number, currentPage:number) =>
     (dispatch: (action: ActionsTypes) => void) => {
     dispatch(toggleFetching(true))
     usersAPI.getUsers(pageSize, currentPage).then(response => {

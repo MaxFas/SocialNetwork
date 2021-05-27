@@ -1,8 +1,7 @@
 import React from 'react';
 import Posts from "./Posts";
 import {connect} from "react-redux";
-import {ActionsTypes} from "../../../redux/state";
-import {StoreReduxType} from "../../../redux/redux-store";
+import {ActionsTypes, StoreReduxType} from "../../../redux/redux-store";
 import {addPost} from "../../../redux/profile-reducer";
 
 const mapStateToProps= (state: StoreReduxType) => {

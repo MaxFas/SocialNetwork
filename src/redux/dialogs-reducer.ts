@@ -1,4 +1,5 @@
-import {ActionsTypes, DialogPageType} from "./state";
+import {DialogPageType} from "./state";
+import {ActionsTypes} from "./redux-store";
 
 const initialState: DialogPageType = {
     dialogs: [{id: 1, name: 'Dima'}, {id: 2, name: 'Alina'}, {id: 3, name: 'Vanya'}, {id: 4, name: 'Masha'}, {
