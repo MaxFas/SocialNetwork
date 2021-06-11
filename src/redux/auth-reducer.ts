@@ -36,7 +36,6 @@ export const setAuth = () => (dispatch: (action: ActionsTypes) => void) =>{
 
 
 export const login = (email: string, password: string, rememberMe: boolean): AppThunk => (dispatch) =>{
-    debugger
     authAPI.login(email, password, rememberMe)
         .then(response => {
             if (response.data.resultCode === 0) {

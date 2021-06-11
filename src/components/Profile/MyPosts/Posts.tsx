@@ -19,7 +19,7 @@ type AddPostFormType = {
 
 const maxLengthPost = maxLengthCreator(10)
 
-function Posts(props: PostsTypePage) {
+const Posts = React.memo((props: PostsTypePage) => {
 
     const posts = props.posts.map(p => { return(
         <Post key={p.id} message={p.message} likesCount={p.likesCount}/>)
@@ -38,7 +38,7 @@ function Posts(props: PostsTypePage) {
             </div>
         </div>
     )
-}
+})
 
 export default Posts;
 
