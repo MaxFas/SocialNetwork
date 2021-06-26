@@ -35,7 +35,7 @@ export const ProfileStatus: React.FC<ProfileStatusType> = (props) => {
                            value={status}/>
                 </div> :
                 <div>
-                    <span onDoubleClick={ChangeModeOn}>{props.status || "------"}</span>
+                    <b>Status:</b> <span onDoubleClick={ChangeModeOn}>{props.status || "------"}</span>
                 </div>}
 
 

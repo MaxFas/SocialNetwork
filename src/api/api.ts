@@ -1,4 +1,5 @@
 import axios from "axios";
+import {ContactType} from "../redux/state";
 
 
 const instance = axios.create({
@@ -28,10 +29,9 @@ export const usersAPI = {
 }
 
 export const profileAPI = {
-
     getProfile (userID: string){
         return instance
-            .get(`profile/` + userID)
+            .get(`profile/${userID}`)
     },
     getStatus (userID: string) {
         return instance
@@ -40,6 +40,19 @@ export const profileAPI = {
     updateStatus (status: string) {
         return instance
             .put(`profile/status`, {status})
+    },
+    savePhoto (file: any) {
+        const formData = new FormData()
+        formData.append('image', file)
+        return instance
+            .put(`profile/photo`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+    },
+    saveProfile (profile: ProfileForServerType) {
+        return instance.put(`profile`, profile)
     }
 }
 
@@ -54,8 +67,24 @@ export const authAPI = {
     },
     logout() {
         return instance
-            .delete(`auth/login`, )
+            .delete(`auth/login` )
     }
+}
+
+export type ProfileForServerType = {
+    userId?: number
+    lookingForAJob?: boolean
+    lookingForAJobDescription?: string
+    fullName?: string
+    contacts?: ContactType
+    github?: string
+    vk?: string
+    facebook?: string
+    instagram?: string
+    twitter?: string
+    website?: string
+    youtube?: string
+    mainLink?: string
 }
 
 

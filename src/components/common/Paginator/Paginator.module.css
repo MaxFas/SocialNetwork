@@ -1,3 +1,20 @@
 .currentPage {
     font-weight: bold;
+    background-color: firebrick;
+    padding: 0 5px 0 5px;
+    border-radius: 35px;
+    margin: 0 2px 0 2px;
+}
+
+.page {
+    border: 1px black solid;
+    padding: 0 5px 0 5px;
+    border-radius: 35px;
+    background-color: white;
+    margin: 0 2px 0 2px;
+}
+
+.container {
+    text-align: center;
+    margin: 5px 10px;
 }

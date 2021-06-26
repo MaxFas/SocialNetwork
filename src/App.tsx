@@ -2,15 +2,16 @@ import React, {Component} from 'react';
 import './App.css';
 import Navbar from "./components/Navbar/Navbar";
 import {BrowserRouter, Route} from 'react-router-dom';
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
-import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import Login from "./components/login/Login";
+import Login from "./components/Login/Login";
 import {connect} from "react-redux";
 import {initializeApp} from "./redux/app-reducer";
 import {StoreReduxType} from "./redux/redux-store";
 import {Preloader} from "./components/common/preloader/Preloader";
+import ProfileContainer from "./components/Profile/ProfileContainer";
+const DialogsContainer = React.lazy(()=> import('./components/Dialogs/DialogsContainer'))
+// const ProfileContainer = React.lazy(()=> import('./components/Profile/ProfileContainer'))
 
 type MDTPType = {
     initializeApp: () => void
@@ -38,10 +39,15 @@ class App extends Component<AppType>{
                     <HeaderContainer/>
                     <Navbar/>
                     <div className={'app-wrapper-content'}>
-                        <Route path={'/dialogs'} render={()=> <DialogsContainer />}/>
+                        <Route path={'/dialogs'} render={()=> {
+                            return <React.Suspense fallback={<Preloader/>}> <DialogsContainer/> </React.Suspense>
+                        }}/>
+                        {/*<Route path={'/profile/:userID?'} render={()=> {
+                            return <React.Suspense fallback={<Preloader/>}> <ProfileContainer /> </React.Suspense>
+                        }}/>*/}
                         <Route path={'/profile/:userID?'} render={()=> <ProfileContainer />}/>
                         <Route path={'/users'} render={()=> <UsersContainer />}/>
-                        <Route path={'/login'} render={()=> <Login />}/>
+                        <Route path={'/Login'} render={()=> <Login />}/>
                     </div>
                 </div>
             </BrowserRouter>

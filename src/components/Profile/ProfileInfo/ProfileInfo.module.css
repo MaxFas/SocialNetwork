@@ -3,6 +3,9 @@
 }
 
 .img {
-
     padding-left: 45px;
+}
+
+.avatar {
+    max-width: 200px;
 }

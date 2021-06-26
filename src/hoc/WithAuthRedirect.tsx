@@ -16,7 +16,7 @@ export function withAuthRedirect<T>(Component: ComponentType<T>) {
 
     function RedirectComponent (props: MSTPType) {
         const {isAuth, ...restProps} = props
-        if (!isAuth) return <Redirect to={'/login'}/>
+        if (!isAuth) return <Redirect to={'/Login'}/>
         return <Component {...restProps as T} />
     }
 

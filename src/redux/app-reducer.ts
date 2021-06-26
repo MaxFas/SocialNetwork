@@ -20,7 +20,6 @@ export const initializedSuccess = () =>
     ({type: "INITIALIZED_SUCCESS"} as const)
 
 export const initializeApp = (): AppThunk => (dispatch) => {
-debugger
     let promise = dispatch(setAuth())
     Promise.all([promise])
         .then(()=> {

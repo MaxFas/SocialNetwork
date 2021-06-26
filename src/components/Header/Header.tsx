@@ -14,7 +14,7 @@ function Header(props: HeaderPropsType) {
         <header className={classes.header}>
             <img src={'https://st.depositphotos.com/1906135/2172/i/600/depositphotos_21724471-stock-photo-cross-abstract.jpg'}/>
             <div className={classes.loginBlock}>{props.isAuth? <div>{props.login} - <button onClick={props.logout}>Log out</button></div>:
-                <NavLink to={'/login'}>Login</NavLink>
+                <NavLink to={'/Login'}>Login</NavLink>
            } </div>
         </header>
     )
