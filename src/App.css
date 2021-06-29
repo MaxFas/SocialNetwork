@@ -1,6 +1,5 @@
 
 .app-wrapper {
-    width: 1200px;
     margin: 0 auto;
 
     display: grid;
@@ -8,12 +7,15 @@
 
     grid-auto-rows: 80px 1fr;
     grid-template-columns: 2fr 10fr;
-    grid-gap: 10px;
+
+    font-family: Poppins,sans-serif;
+    color: #777;
 }
 
 .app-wrapper-content{
+    min-height: 100vh;
     grid-area: c;
-    background-color: cornflowerblue;
+    background-color: #1f1f20;
 }
 
 

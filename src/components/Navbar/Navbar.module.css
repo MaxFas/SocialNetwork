@@ -1,15 +1,18 @@
 .nav {
     grid-area: n;
-    background-color: aquamarine;
+    background-color: #252527;
     padding: 20px;
+    min-height: 100vh;
+    border: 5px solid #1f1f20;
 
 }
 
 .item a {
-    color: white;
+    color: #777;
     text-decoration: none;
+    font-size: 25px;
 }
 
 .item a.active {
-    color: gold;
+    color: white;
 }

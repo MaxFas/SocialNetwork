@@ -1,11 +1,50 @@
 .descriptionPost{
-    padding: 10px;
-}
-
-.img {
-    padding-left: 45px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 0 auto;
 }
 
 .avatar {
-    max-width: 200px;
+    max-width: 400px;
+    height: 400px;
+    margin: 1px;
+    padding-top: 10px;
+
+}
+
+.avatar img {
+    border-radius: 30px;
+}
+
+.addPhoto {
+    margin: 5px 5px 5px 1px;
+    color: transparent;
+    width: 130px;
+
+}
+
+.status {
+    margin-top: 10px;
+}
+
+.personalInformation{
+    padding-left: 5px;
+}
+
+.personalInformation div{
+    margin-top: 5px;
+}
+
+
+
+
+.contacts div {
+    padding-left: 15px;
+    margin-top: 5px;
+}
+
+.personalInformation textarea {
+    width: 50%;
+    height: 30%;
 }

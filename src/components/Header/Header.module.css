@@ -1,10 +1,14 @@
 .header {
+    display: flex;
     grid-area: h;
-    background-color: cadetblue;
+    background-color: #252527;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
 }
 
 .header img {
-    width: 50px;
+    width: 100px;
 }
 
 .loginBlock {

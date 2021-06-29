@@ -1,5 +1,6 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { ProfileDataType} from "../ProfileInfo";
+import s from './../ProfileInfo.module.css'
 import { useFormik } from 'formik';
 import {saveProfile} from "../../../../redux/profile-reducer";
 import {useDispatch} from "react-redux";
@@ -19,7 +20,6 @@ export const ProfileDataForm: React.FC<ProfileDataType> = (props)  => {
 
         },
         onSubmit: (values) =>  {
-            debugger
             dispatch(saveProfile({...values, contacts: JSON.parse(values.contacts)}))
             props.toEditMode(false)
         }
@@ -27,7 +27,7 @@ export const ProfileDataForm: React.FC<ProfileDataType> = (props)  => {
 
 
     return (
-        <form onSubmit={formik.handleSubmit}>
+        <form className={s.personalInformation} onSubmit={formik.handleSubmit}>
             {props.owner && <div>
                 <button type={"submit"}>Save</button>
             </div>}
@@ -40,13 +40,13 @@ export const ProfileDataForm: React.FC<ProfileDataType> = (props)  => {
             <div>
                 <b>My professional skills</b>: <textarea {...formik.getFieldProps('lookingForAJobDescription')}/>
             </div>
-            <div>
-                <b>About me</b> <textarea {...formik.getFieldProps('aboutMe')}/>
-            </div>
-            <div>
-                {Object.keys(props.profile.contacts).map(cont => {
+            <div className={s.contacts}>
+               <b>Contacts</b>: {Object.keys(props.profile.contacts).map(cont => {
                     return <Contact contactValue={props.profile.contacts[cont]} contactTitle={cont} editMode={props.editMode} formik={formik}/>
                 })}
+            </div>
+            <div>
+                <b>About me</b>: <textarea {...formik.getFieldProps('aboutMe')}/>
             </div>
         </form>
     )

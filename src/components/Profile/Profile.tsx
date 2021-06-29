@@ -3,6 +3,7 @@ import classes1 from './Profile.module.css';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import PostsContainer from "./MyPosts/PostsContainer";
 import {ProfileType} from "../../redux/profile-reducer";
+import {Preloader} from "../common/preloader/Preloader";
 
 type ProfileFCType = {
     profile: ProfileType
@@ -14,6 +15,8 @@ type ProfileFCType = {
 }
 
 const Profile = (props: ProfileFCType) => {
+
+    if (!Object.keys(props.profile).length) return <Preloader/>
 
     return (
         <div className={classes1.content}>

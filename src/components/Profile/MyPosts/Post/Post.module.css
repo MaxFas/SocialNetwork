@@ -1,7 +1,7 @@
 
 
 .item {
-color: greenyellow;
+    color: white;
 }
 
 .item img{
@@ -11,5 +11,5 @@ color: greenyellow;
 }
 
 .item span {
-    color: red;
+    color: #ff594d;
 }

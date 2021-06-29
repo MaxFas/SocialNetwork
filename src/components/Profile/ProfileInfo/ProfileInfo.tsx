@@ -21,8 +21,6 @@ function ProfileInfo(props: ProfileInfoType) {
 
     const [editMode, setEditMode] = useState(false)
 
-    if (!Object.keys(props.profile).length) return <Preloader/>
-
     const onMainPhotoSelected =(event: React.ChangeEvent<HTMLInputElement>) => {
         if (!event.currentTarget.files) return
         props.savePhoto(event.currentTarget.files[0])
@@ -32,14 +30,18 @@ function ProfileInfo(props: ProfileInfoType) {
 
         <div>
             <div className={s.descriptionPost}>
-                <img className={s.avatar}
-                     src={props.profile.photos.large !== null ? props.profile.photos.large : photo}/>
-                {props.isOwner && <input type={'file'} onChange={onMainPhotoSelected}/>}
-                {editMode?
-                    <ProfileDataForm profile={props.profile} owner={props.isOwner} toEditMode={setEditMode} editMode={editMode}/>:
-                    <ProfileData profile={props.profile} owner={props.isOwner} toEditMode={setEditMode} editMode={editMode}/>}
-                <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
-            </div>
+                    <div className={s.avatar}>
+                <img
+                     src={props.profile.photos.large !== null ? props.profile.photos.large : photo} alt={'avatar'}/>
+                        {props.isOwner && <input className={s.addPhoto} type={'file'} onChange={onMainPhotoSelected}/>}
+                    </div>
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                </div>
+                    {editMode ?
+                        <ProfileDataForm profile={props.profile} owner={props.isOwner} toEditMode={setEditMode}
+                                         editMode={editMode}/> :
+                        <ProfileData profile={props.profile} owner={props.isOwner} toEditMode={setEditMode}
+                                     editMode={editMode}/>}
         </div>
     )
 }
@@ -54,7 +56,7 @@ export type ProfileDataType = {
 function ProfileData (props: ProfileDataType) {
 
     return (
-        <div>
+        <div className={s.personalInformation}>
             {props.owner && <div>
                 <button onClick={() => {
                     props.toEditMode(true)
@@ -70,13 +72,13 @@ function ProfileData (props: ProfileDataType) {
             {props.profile.lookingForAJob && <div>
                 <b>My professional skills</b>: {props.profile.lookingForAJobDescription}
             </div>}
-            <div>
-                <b>About me</b>: {props.profile.aboutMe}
+            <div className={s.contacts}>
+                <b>Contacts</b>:{Object.keys(props.profile.contacts).map(cont => {
+                    return <Contact key={cont} contactValue={props.profile.contacts[cont]} contactTitle={cont} editMode={props.editMode}/>
+                })}
             </div>
             <div>
-                {Object.keys(props.profile.contacts).map(cont => {
-                    return <Contact contactValue={props.profile.contacts[cont]} contactTitle={cont} editMode={props.editMode}/>
-                })}
+                <b>About me</b>: {props.profile.aboutMe}
             </div>
         </div>
     )
