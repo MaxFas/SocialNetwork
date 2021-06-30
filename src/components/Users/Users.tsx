@@ -2,6 +2,7 @@ import React from "react";
 import {UserType} from "../../redux/state";
 import {Paginator} from "../common/Paginator/Paginator";
 import {User} from "./User";
+import s from "./Users.module.css";
 
 
 export type UsersPageType = {
@@ -21,6 +22,8 @@ export function Users (props: UsersPageType) {
             <div>
                 <Paginator currentPage={props.currentPage} onPageChanged={props.onPageChanged}
                            totalUsersCount={props.totalUsersCount} pageSize={props.pageSize}/>
+                           <div >
                 {props.users.map(u => <User follow={props.follow} unFollow={props.unFollow} followingInProgress={props.followingInProgress} user={u}/>)}
+                           </div>
             </div>)
 }

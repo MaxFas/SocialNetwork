@@ -1,0 +1,23 @@
+.userPhoto {
+    width: 150px;
+    height: 100px
+}
+
+.currentPage {
+    font-weight: bold;
+}
+
+.users {
+    max-width: 100vh;
+    max-height: 100vh;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.user {
+    display: inline-block;
+    justify-content: space-around;
+    align-items: center;
+    max-height: 150px;
+    padding: 15px;
+}

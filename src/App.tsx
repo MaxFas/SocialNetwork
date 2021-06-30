@@ -45,7 +45,7 @@ class App extends Component<AppType> {
                             <Route path={'/profile/:userID?'} render={() => <ProfileContainer/>}/>
                             <Route path={'/users'} render={() => <UsersContainer/>}/>
                             <Route path={'/Login'} render={() => <Login/>}/>
-                            <Route path='*' render={()=><h1>404: PAGE NOT FOUND</h1>}/>
+                            <Route path='*' render={()=><h1 style={{textAlign: "center", marginTop: "300px"}}>404: PAGE NOT FOUND</h1>}/>
                         </Switch>
                     </div>
                 </div>
