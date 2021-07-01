@@ -23,7 +23,7 @@ export function Users (props: UsersPageType) {
                 <Paginator currentPage={props.currentPage} onPageChanged={props.onPageChanged}
                            totalUsersCount={props.totalUsersCount} pageSize={props.pageSize}/>
                            <div >
-                {props.users.map(u => <User follow={props.follow} unFollow={props.unFollow} followingInProgress={props.followingInProgress} user={u}/>)}
+                {props.users.map(u => <User key={u.id} follow={props.follow} unFollow={props.unFollow} followingInProgress={props.followingInProgress} user={u}/>)}
                            </div>
             </div>)
 }
