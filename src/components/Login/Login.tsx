@@ -1,4 +1,5 @@
 import React from "react";
+// @ts-ignore
 import {InjectedFormProps, Field, reduxForm} from "redux-form";
 import {Input} from "../common/FormControls/FormControls";
 import {maxLengthCreator, required} from "../../assets/validators/validators";
@@ -31,7 +32,7 @@ const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
             </p>
             <p>or use common test account credentials:</p>
             <p>Email: fastsovmax@yandex.ru</p>
-            <p>Password: test</p>
+            <p>Password: testacc</p>
             <div><Field placeholder={'Email'} name={'email'} component={Input} validate={[required, maxLengthText]}/></div>
             <div><Field placeholder={'Password'} name={'password'} type={'password'} component={Input}/></div>
             <div><Field type='checkbox' name={'rememberMe'} component={Input}/> remember me</div>

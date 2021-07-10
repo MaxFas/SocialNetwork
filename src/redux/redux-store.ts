@@ -12,6 +12,7 @@ import {
 } from "./users-reducer";
 import {authReducer, setAuthUserData} from "./auth-reducer";
 import ThunkMiddleware, {ThunkAction} from "redux-thunk";
+// @ts-ignore
 import { reducer as formReducer } from "redux-form";
 import {AppReducer, initializedSuccess} from "./app-reducer";
 

@@ -1,5 +1,6 @@
 
 import {authAPI} from "../api/api";
+// @ts-ignore
 import {stopSubmit} from "redux-form";
 import {ActionsTypes, AppThunk} from "./redux-store";
 
