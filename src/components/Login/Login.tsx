@@ -24,6 +24,14 @@ const maxLengthText = maxLengthCreator(20)
 const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
     return (
         <form action="" onSubmit={props.handleSubmit}>
+            <p>To log in get registered
+                <a href={'https://social-network.samuraijs.com/'}
+                   target={'_blank'}> here
+                </a>
+            </p>
+            <p>or use common test account credentials:</p>
+            <p>Email: fastsovmax@yandex.ru</p>
+            <p>Password: test</p>
             <div><Field placeholder={'Email'} name={'email'} component={Input} validate={[required, maxLengthText]}/></div>
             <div><Field placeholder={'Password'} name={'password'} type={'password'} component={Input}/></div>
             <div><Field type='checkbox' name={'rememberMe'} component={Input}/> remember me</div>
